@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { client } from '../lib/trpcClient';
+
+const data = await client.query("greeting", {name: "Astro 🚀"});
+
+const books = await client.query("books");
+
+const medium = await client.query("medium");
+
+import Home from "../components/home"
+---
+
+<Layout>
+	<main>
+		<Home mediumData={medium} booksData={books}/>
+	</main>
+</Layout>
