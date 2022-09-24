@@ -1,19 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import { client } from '../lib/trpcClient';
-
-const data = await client.query("greeting", {name: "Astro 🚀"});
-
-const books = await client.query("books");
-
-const medium = await client.query("medium");
-
-import Home from "../components/home"
+const posts = await Astro.glob('./blog/*.mdx');
 ---
 
 <Layout>
-	<main>
-		<Home mediumData={medium} booksData={books}/>
-	</main>
+	<div class="p-8 w-full flex flex-row gap-4 font-mono font-bold text-xl justify-end items-center fixed top-0">
+		<a href="#about" class="hover:underline hidden md:block">ABOUT</a>
+		<a href="#projects" class="hover:underline hidden md:block">PROJECTS</a>
+		<a href="#blog" class="hover:underline hidden md:block">BLOG</a>
+		<a href="https://github.com/louisjdcharles" aria-label="github"><img src="/github-icon.svg" alt="github" class="sm:w-5 sm:h-5 w-7 h-7"/></a>
+		<a href="https://www.linkedin.com/in/louisjdcharles/" aria-label="linkedin"><img src="/linkedin-icon.svg" alt="linkedin" class="sm:w-5 sm:h-5 w-7 h-7"/></a>
+	  </div>
+
+	  <main class="bg-gray-100">
+		<div class="h-screen w-full p-4">
+		  <div class="h-full w-full border-black border overflow-y-scroll hide-scrollbar scroll-smooth">
+		
+		<div class="h-full font-mono font-bold flex justify-center items-center">
+		  <div>
+			<h1 class="text-4xl md:text-8xl">LOUIS CHARLES</h1>
+			<div class="flex flex-col md:flex-row">
+			  <div>
+				<span class="md:hidden">&bull;&nbsp;</span><span>PROGRAMMER&nbsp;</span>
+			  </div>
+			  <div>
+				<span>&bull;&nbsp;</span><span>STUDENT&nbsp;</span>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<div id="about" class="h-full font-mono p-8 flex justify-center items-center  font-bold text-justify">
+		  <div class="md:w-3/5 lg:w-2/5 w-full space-y-4">
+			<h2 class="text-4xl border-b border-black">ABOUT</h2>
+			<p class="text-sm md:text-base">
+			  Hi, I&apos;m Louis, a student based in the United Kingdom.
+			  I am applying to study a degree in computer science at the Universities of
+			  Cambridge, Bristol, Bath and Warwick.
+			</p>
+			<p class="text-sm md:text-base">
+			  I am passionate about using both technology and creativity to solve
+			  interesting problems, and hope to found a company that does
+			  exactly that in future. 
+			</p>
+		  </div>
+		</div>
+
+		<div id="projects" class="h-full font-mono font-bold p-8 flex justify-center items-center">
+		  <div class="md:w-3/5 lg:w-2/5 w-full space-y-4">
+			<h2 class="text-4xl border-b border-black">PROJECTS</h2>
+			<p class="text-sm md:text-base">
+				I am currently working on a productivity app for students
+			</p>
+			<p class="text-sm md:text-base">
+			  I am also working on a 2D game engine written in C++ using OpenGL for rendering
+			</p>
+			<p class="text-sm md:text-base">
+			  In 2019, I worked on the game <a class="underline" href={"https://ygd.bafta.org/competition/competition-news/2019/ladder-climb"}>Ladder Climb</a> which
+			  was nominated for a Bafta Young Game Designers award
+			</p>
+			<p class="text-sm md:text-base">
+			  For details on my other projects, go to my <a class="underline" href="https://github.com/louisjdcharles">GitHub page</a>
+			</p>
+			<p class="text-sm md:text-base">
+			  For more details about my current and future projects, see this <a class="underline" href="https://jade-ski-40a.notion.site/02feb3451e4e441c883d72474dec6950?v=0016f347242c4f7aa7338872a52b576e">Notion page</a>
+			</p>
+		  </div>
+		</div>
+
+		<div id="blog" class="h-full font-mono font-bold p-8 flex justify-center items-center">
+		  <div class="md:w-3/5 lg:w-2/5 w-full">
+			<h2 class="text-4xl border-b border-black">BLOG</h2>
+			<p>My recent blog posts:</p>
+			{ posts.map(post => <p><a class="underline" href={post.url}>{post.frontmatter.title}</a></p>) }
+		  </div>
+		</div>
+		</div>
+		</div>
+
+		
+	  </main>
 </Layout>
