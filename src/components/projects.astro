@@ -1,0 +1,61 @@
+---
+const query = `{
+  user(login: \"louisjdcharles\") {
+    pinnedItems(first: 6, types: REPOSITORY) {
+      nodes {
+        ... on Repository {
+          name,
+          description,
+          url,
+          stargazerCount,
+          openGraphImageUrl,
+          repositoryTopics(first: 6) {
+            edges {
+              node {
+                topic {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
+const data = await fetch(
+    "https://api.github.com/graphql",
+    {
+        headers: {
+            Authorization: "bearer " + import.meta.env.GH_TOKEN,
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        mode: "cors",
+        redirect: "follow",
+        body: JSON.stringify({ query })
+    }
+)
+
+const items = (await data.json()).data.user.pinnedItems.nodes
+---
+
+<div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+    {items.map((item: any) => 
+        <div class="space-y-4 bg-slate-800 p-4 rounded-2xl drop-shadow-xl">
+            <h3 class="text-2xl text-green-500 font-bold">{item.name}</h3>
+            <img src={item.openGraphImageUrl} class="rounded-2xl drop-shadow-lg"/>
+            <p class="text-neutral-200">{item.description}</p>
+            <div class="flex flex-row flex-wrap gap-2 justify-start items-center">{item.repositoryTopics.edges.map((edge: any) => 
+                <span class="px-3 py-1 bg-slate-900 text-blue-400 rounded-full drop-shadow-md font-bold">{edge.node.topic.name}</span>
+            )}<span class="px-3 py-1 bg-slate-900 text-blue-400 rounded-full drop-shadow-md font-bold">⭐ {item.stargazerCount}</span>
+            </div>
+        </div>
+    )}
+    <div class="space-y-4 bg-slate-800 p-4 rounded-2xl drop-shadow-xl">
+        <h3 class="text-2xl text-green-500 font-bold">Looking for more?</h3>
+        <p class="text-neutral-200">The rest of my projects can be found on my <a class="underline text-blue-400" href="https://github.com/louisjdcharles">GitHub Page</a></p>
+    </div>
+</div>
