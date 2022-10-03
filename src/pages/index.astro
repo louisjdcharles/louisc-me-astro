@@ -17,30 +17,30 @@ const year = (new Date()).getFullYear()
 				<p class="text-2xl font-light text-slate-400">I'm <strong class="text-blue-400 font-bold">Louis</strong>, a student from <img class="emoji" src="gb-flag.svg"/></p>
 			</div>
 		</div>
-		<div class="fixed top-0 w-full flex flex-row gap-4 p-4 justify-end text-lg">
-			<a href="https://github.com/louisjdcharles" class="p-2"><GithubIcon class="emoji fill-neutral-100 hover:fill-blue-400" /></a>
-			<a href="https://linkedin.com/in/louisjdcharles" class="p-2"><LinkedinIcon class="emoji fill-neutral-100 hover:fill-blue-400" /></a>
+		<div class="fixed top-0 w-full flex flex-row gap-4 p-4 justify-end">
+			<a href="https://github.com/louisjdcharles" class="p-2"><GithubIcon class="fill-neutral-100 hover:fill-blue-400 w-6" /></a>
+			<a href="https://linkedin.com/in/louisjdcharles" class="p-2"><LinkedinIcon class="fill-neutral-100 hover:fill-blue-400 w-6" /></a>
 		</div>
 		<div id="about" class="w-full flex justify-center items-center bg-slate-800 p-10">
 			<div class="xl:w-3/5 space-y-6">
 				<h2 class="text-4xl text-blue-400 font-bold">About Me</h2>
 				<p class="text-xl text-neutral-300">
-					👋 Hi! I'm Louis, a student from the united kingdom.
+					<img class="emoji" src="waving.svg"/> Hi! I'm Louis, a student from the united kingdom.
 				</p>
 				<p class="text-xl text-neutral-300">
-					🎓 I am currently in year 13, studying A Level Maths,
+					<img class="emoji" src="school.svg"/> I am currently in year 13, studying A Level Maths,
 					Further Maths and Physics.
 					Next year I am planning to start a degree in Computer Science,
 					and have applied to Cambridge, Bristol, Bath and Warwick.
 				</p>
 				<p class="text-xl text-neutral-300">
-					🖥️ My interest in Computer Science began at the age of 13,
+					<img class="emoji" src="computer.svg"/> My interest in Computer Science began at the age of 13,
 					when I learned how to make simple websites using HTML and CSS,
 					since then I have worked on interesting projects spanning many areas
 					of Computer Science.
 				</p>
 				<p class="text-xl text-neutral-300">
-					➡️ Currently, I am focusing on projects involving computer graphics and AI
+					<img class="emoji" src="arrow.svg"/> Currently, I am focusing on projects involving computer graphics and AI
 				</p>
 			</div>
 		</div>
@@ -55,6 +55,12 @@ const year = (new Date()).getFullYear()
 			<div class="xl:w-3/5 w-full space-y-6">
 				<h2 class="text-4xl text-orange-400 font-bold">CV</h2>
 				<Cv />
+			</div>
+		</div>
+		<div id="contact" class="w-full flex justify-center items-center bg-slate-700 p-10 text-neutral-100 text-xl">
+			<div class="xl:w-3/5 w-full space-y-6">
+				<h2 class="text-4xl text-cyan-400 font-bold">Contact</h2>
+				<p>Email: <a class="underline text-blue-400" href="mailto:contact@louisc.me">contact@louisc.me</a></p>
 			</div>
 		</div>
 		<div class="w-full bg-slate-900 p-4 flex justify-center items-center text-white font-light gap-4">
