@@ -1,84 +1,73 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const posts = await Astro.glob('./blog/*.mdx');
+import GithubIcon from '../components/github-icon.astro';
+import LinkedinIcon from '../components/linkedin-icon.astro';
+import Projects from '../components/projects.astro';
+import Cv from '../components/cv.astro';
+
+const year = (new Date()).getFullYear()
 ---
 
-<Layout>
-	<div class="p-8 w-full flex flex-row gap-4 font-mono font-bold text-xl justify-end items-center fixed top-0">
-		<a href="#about" class="hover:underline hidden md:block">ABOUT</a>
-		<a href="#projects" class="hover:underline hidden md:block">PROJECTS</a>
-		<a href="#blog" class="hover:underline hidden md:block">BLOG</a>
-		<a href="https://github.com/louisjdcharles" aria-label="github"><img src="/github-icon.svg" alt="github" class="sm:w-5 sm:h-5 w-7 h-7"/></a>
-		<a href="https://www.linkedin.com/in/louisjdcharles/" aria-label="linkedin"><img src="/linkedin-icon.svg" alt="linkedin" class="sm:w-5 sm:h-5 w-7 h-7"/></a>
-	  </div>
-
-	  <main class="bg-gray-100">
-		<div class="h-screen w-full p-4">
-		  <div class="h-full w-full border-black border overflow-y-scroll hide-scrollbar scroll-smooth">
-		
-		<div class="h-full font-mono font-bold flex justify-center items-center">
-		  <div>
-			<h1 class="text-4xl md:text-8xl">LOUIS CHARLES</h1>
-			<div class="flex flex-col md:flex-row">
-			  <div>
-				<span class="md:hidden">&bull;&nbsp;</span><span>PROGRAMMER&nbsp;</span>
-			  </div>
-			  <div>
-				<span>&bull;&nbsp;</span><span>STUDENT&nbsp;</span>
-			  </div>
+<Layout title="Louis Charles">
+	<main class="min-h-screen w-full font-mono bg-slate-700">
+		<div class="w-full h-screen flex justify-center items-center p-10">
+			<div>
+				<h1 class="text-7xl font-light p-1 text-neutral-200">Hello, World!</h1>
+				<p class="text-2xl font-light text-slate-400">I'm <strong class="text-blue-400 font-bold">Louis</strong>, a student from <img class="emoji" src="gb-flag.svg"/></p>
 			</div>
-		  </div>
 		</div>
+		<div class="fixed top-0 w-full flex flex-row gap-4 p-4 justify-end">
+			<a href="https://github.com/louisjdcharles" class="p-2"><GithubIcon class="fill-neutral-100 hover:fill-blue-400 w-6" /></a>
+			<a href="https://linkedin.com/in/louisjdcharles" class="p-2"><LinkedinIcon class="fill-neutral-100 hover:fill-blue-400 w-6" /></a>
+		</div>
+		<div id="about" class="w-full flex justify-center items-center bg-slate-800 p-10">
+			<div class="xl:w-3/5 space-y-6">
+				<h2 class="text-4xl text-blue-400 font-bold">About Me</h2>
+				<p class="text-xl text-neutral-300">
+					<img class="emoji" src="waving.svg"/> Hi! I'm Louis, a student from the united kingdom.
+				</p>
+				<p class="text-xl text-neutral-300">
+					<img class="emoji" src="school.svg"/> I am currently in year 13, studying A Level Maths,
+					Further Maths and Physics.
+					Next year I am planning to start a degree in Computer Science,
+					and have applied to Cambridge, Bristol, Bath and Warwick.
+				</p>
+				<p class="text-xl text-neutral-300">
+					<img class="emoji" src="computer.svg"/> My interest in Computer Science began at the age of 13,
+					when I learned how to make simple websites using HTML and CSS,
+					since then I have worked on interesting projects spanning many areas
+					of Computer Science.
+				</p>
+				<p class="text-xl text-neutral-300">
+					<img class="emoji" src="arrow.svg"/> Currently, I am focusing on projects involving computer graphics and AI
+				</p>
+			</div>
+		</div>
+		<div id="projects" class="w-full flex justify-center items-center bg-slate-700 p-10">
+			<div class="xl:w-3/5 w-full space-y-6">
+				<h2 class="text-4xl text-red-400 font-bold">Featured Projects</h2>
 
-		<div id="about" class="h-full font-mono p-8 flex justify-center items-center  font-bold text-justify">
-		  <div class="md:w-3/5 lg:w-2/5 w-full space-y-4">
-			<h2 class="text-4xl border-b border-black">ABOUT</h2>
-			<p class="text-sm md:text-base">
-			  Hi, I&apos;m Louis, a student based in the United Kingdom.
-			  I am applying to study a degree in computer science at the Universities of
-			  Cambridge, Bristol, Bath and Warwick.
-			</p>
-			<p class="text-sm md:text-base">
-			  I am passionate about using both technology and creativity to solve
-			  interesting problems, and hope to found a company that does
-			  exactly that in future. 
-			</p>
-		  </div>
+				<Projects />
+			</div>
 		</div>
-
-		<div id="projects" class="h-full font-mono font-bold p-8 flex justify-center items-center">
-		  <div class="md:w-3/5 lg:w-2/5 w-full space-y-4">
-			<h2 class="text-4xl border-b border-black">PROJECTS</h2>
-			<p class="text-sm md:text-base">
-				I am currently working on a productivity app for students
-			</p>
-			<p class="text-sm md:text-base">
-			  I am also working on a 2D game engine written in C++ using OpenGL for rendering
-			</p>
-			<p class="text-sm md:text-base">
-			  In 2019, I worked on the game <a class="underline" href={"https://ygd.bafta.org/competition/competition-news/2019/ladder-climb"}>Ladder Climb</a> which
-			  was nominated for a Bafta Young Game Designers award
-			</p>
-			<p class="text-sm md:text-base">
-			  For details on my other projects, go to my <a class="underline" href="https://github.com/louisjdcharles">GitHub page</a>
-			</p>
-			<p class="text-sm md:text-base">
-			  For more details about my current and future projects, see this <a class="underline" href="https://jade-ski-40a.notion.site/02feb3451e4e441c883d72474dec6950?v=0016f347242c4f7aa7338872a52b576e">Notion page</a>
-			</p>
-		  </div>
+		<div id="cv" class="w-full flex justify-center items-center bg-slate-800 p-10">
+			<div class="xl:w-3/5 w-full space-y-6">
+				<h2 class="text-4xl text-orange-400 font-bold">CV</h2>
+				<Cv />
+			</div>
 		</div>
-
-		<div id="blog" class="h-full font-mono font-bold p-8 flex justify-center items-center">
-		  <div class="md:w-3/5 lg:w-2/5 w-full">
-			<h2 class="text-4xl border-b border-black">BLOG</h2>
-			<p>My recent blog posts:</p>
-			{ posts.map(post => <p><a class="underline" href={post.url}>{post.frontmatter.title}</a></p>) }
-		  </div>
+		<div id="contact" class="w-full flex justify-center items-center bg-slate-700 p-10 text-neutral-100 text-xl">
+			<div class="xl:w-3/5 w-full space-y-6">
+				<h2 class="text-4xl text-cyan-400 font-bold">Contact</h2>
+				<p>Email: <a class="underline text-blue-400" href="mailto:contact@louisc.me">contact@louisc.me</a></p>
+			</div>
 		</div>
+		<div class="w-full bg-slate-900 p-4 flex justify-center items-center text-white font-light gap-4">
+			<span class="text-2xl">&copy;</span>
+			<span>
+				 Louis Charles {year}
+			</span>
 		</div>
-		</div>
-
-		
-	  </main>
+	</main>
 </Layout>
